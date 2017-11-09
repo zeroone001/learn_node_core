@@ -1,7 +1,7 @@
 let fs = require('fs');
 let path = require('path');//path.extname();
 let http = require('http');
-let mymodule = require('./mymodule.js');
+// let mymodule = require('./mymodule.js');
 
 /* readFile async */
 // // _file 是buffer
@@ -30,3 +30,28 @@ let mymodule = require('./mymodule.js');
 //     if(err) throw err;
 //     console.log(lists.join('\n'));
 // });
+
+/* http */
+
+// http.get(process.argv[2],(res)=>{
+//     // console.log(res.statusCode);
+//     let rawData = "";
+//     res.setEncoding('utf8');
+//     res.on('data', (chunk) => { 
+//         console.log(chunk); 
+//     });
+//     // res.on('end', ()=>{
+//     //     console.log(rawData);
+//     // });
+// });
+
+
+
+
+
+
+
+
+
+
+
