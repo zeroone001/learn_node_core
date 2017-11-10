@@ -3,6 +3,7 @@ let path = require('path');//path.extname();
 let http = require('http');
 let bl = require('bl');
 let net = require('net');
+let strftime = require('strftime'); 
 // let mymodule = require('./mymodule.js');
 
 /* readFile async */
@@ -48,26 +49,26 @@ let net = require('net');
 // });
 
 /* http collect */
-function getData(num) {
-    if (num > 4) return;
-    let path = process.argv[num]
-    http.get(path,(res)=>{
+// function getData(num) {
+//     if (num > 4) return;
+//     let path = process.argv[num]
+//     http.get(path,(res)=>{
 
-        let rawData = "";
-        res.setEncoding('utf8');
-        res.on('data', (chunk) => { 
-            rawData = rawData + chunk;
-        });
-        res.on('end', ()=>{
-            // console.log(rawData.length);
-            console.log(rawData);
-            num++;
-            getData(num);
-        });
+//         let rawData = "";
+//         res.setEncoding('utf8');
+//         res.on('data', (chunk) => { 
+//             rawData = rawData + chunk;
+//         });
+//         res.on('end', ()=>{
+//             // console.log(rawData.length);
+//             console.log(rawData);
+//             num++;
+//             getData(num);
+//         });
 
-    });
-}
-getData(2);
+//     });
+// }
+// getData(2);
 // http.get(process.argv[2], (res) =>{
 //     res.pipe( bl( (err, data)=>{
 //         data = data.toString();
@@ -76,7 +77,13 @@ getData(2);
 //     } ) );
 // });
 
+let server = net.createServer( (socket)=>{
+    let data = strftime('%F %H:%M', new Date());
+    socket.write(data);
+    socket.end('\n');
+});
 
+server.listen(process.argv[2]);
 
 
 
