@@ -77,13 +77,17 @@ let strftime = require('strftime');
 //     } ) );
 // });
 
-let server = net.createServer( (socket)=>{
-    let data = strftime('%F %H:%M', new Date());
-    socket.write(data);
-    socket.end('\n');
-});
+// let server = net.createServer( (socket)=>{
+//     let data = strftime('%F %H:%M', new Date());
+//     socket.write(data);
+//     socket.end('\n');
+// });
 
-server.listen(process.argv[2]);
+// server.listen(process.argv[2]);
+
+http.createServer( (request, response)=>{
+
+} );
 
 
 
