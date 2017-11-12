@@ -85,9 +85,13 @@ let strftime = require('strftime');
 
 // server.listen(process.argv[2]);
 
-http.createServer( (request, response)=>{
-
-} );
+http.createServer((request, response)=>{
+    response.writeHead(200, { 'content-type': 'text/plain' });
+    
+    let file = fs.createReadStream(process.argv[3]);
+    file.pipe(response);
+    // console.log(file);
+}).listen(process.argv[2]);
 
 
 
