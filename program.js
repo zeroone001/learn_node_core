@@ -87,16 +87,15 @@ let map = require('through2-map');
 
 // server.listen(process.argv[2]);
 
-// http.createServer((request, response)=>{
-//     console.log(url.parse(request.url).pathname);
-//     response.writeHead(200, { 'content-type': 'text/plain' });
+/*http.createServer((request, response)=>{
+    console.log(url.parse(request.url).pathname);
+    response.writeHead(200, { 'content-type': 'text/plain' });
 
-//     let file = fs.createReadStream(process.argv[3]);
-//     file.pipe(response);
-//     // console.log(file);
-// }).listen(process.argv[2]);
+    let file = fs.createReadStream(process.argv[3]);
+    file.pipe(response);
+}).listen(process.argv[2]);*/
 
-http.createServer((req,res) =>{
+/*http.createServer((req,res) =>{
     if(req.method == "POST"){
         res.writeHead(200, {'content-type': 'text/plain'});
         req.pipe(map((chunk)=>{
@@ -109,12 +108,32 @@ http.createServer((req,res) =>{
     req.on('end', function(){
         res.end();
     });
-    
-    // fs.createReadStream(process.argv[3]).pipe(map((chunk)=>{
-    //     return chunk.toString().toUpperCase();
-    // })).pipe(res);
-}).listen(process.argv[2]);
+}).listen(process.argv[2]);*/
 
+http.createServer((req,res)=>{
+    if(req.method == "GET"){
+        res.writeHead(200,{'content-type': 'application/json'});
+        // console.log(url.parse(req.url));
+        let $pathname = url.parse(req.url).pathname.split('/');
+        let $query = url.parse(req.url).query.split("=");
+        if($pathname[2] === "parsetime"){
+            let obj = {
+               "hour": new Date($query[1]).getHours(),
+               "minute": new Date($query[1]).getMinutes(),
+               "second": new Date($query[1]).getSeconds()
+            };
+
+            res.end(JSON.stringify(obj));
+        }else if($pathname[2] === "unixtime"){
+            let obj = {
+               "unixtime": new Date($query[1]).getTime()
+            };
+
+            res.end(JSON.stringify(obj));
+        }
+        
+    }
+}).listen(process.argv[2]);
 
 
 
