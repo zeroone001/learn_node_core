@@ -110,7 +110,7 @@ let map = require('through2-map');
     });
 }).listen(process.argv[2]);*/
 
-http.createServer((req,res)=>{
+/*http.createServer((req,res)=>{
     if(req.method == "GET"){
         res.writeHead(200,{'content-type': 'application/json'});
         // console.log(url.parse(req.url));
@@ -133,7 +133,7 @@ http.createServer((req,res)=>{
         }
         
     }
-}).listen(process.argv[2]);
+}).listen(process.argv[2]);*/
 
 
 
