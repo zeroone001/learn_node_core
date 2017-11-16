@@ -137,7 +137,7 @@ let map = require('through2-map');
 }).listen(process.argv[2]);*/
 
 // 创建一个 HTTP 代理服务器~~
-const proxy = http.createServer((req, res) => {
+/*const proxy = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
 });
@@ -152,10 +152,10 @@ proxy.on('connect', (req, cltSocket, head) => {
     srvSocket.pipe(cltSocket);
     cltSocket.pipe(srvSocket);
   });
-});
+});*/
 
 // 代理服务器正在运行
-proxy.listen(1337, '127.0.0.1', () => {
+/*proxy.listen(1337, '127.0.0.1', () => {
 
   // 发送一个请求到代理服务器
   const options = {
@@ -184,7 +184,12 @@ proxy.listen(1337, '127.0.0.1', () => {
     });
   });
 });
+*/
+// console.log('beep boop');
 
+// fs.createReadStream(process.argv[2]).pipe(process.stdout);
+
+process.stdout.write('请输入num1的值：');
 
 
 
