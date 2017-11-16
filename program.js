@@ -6,7 +6,8 @@ let net = require('net');
 let strftime = require('strftime'); 
 let url = require('url');
 let map = require('through2-map');
-
+let through = require('through2');
+let split = require('split');
 // let mymodule = require('./mymodule.js');
 
 /* readFile async */
@@ -189,7 +190,30 @@ proxy.on('connect', (req, cltSocket, head) => {
 
 // fs.createReadStream(process.argv[2]).pipe(process.stdout);
 
-process.stdout.write('请输入num1的值：');
+// process.stdout.write('请输入num1的值：');
+
+// process.stdin.pipe(process.stdout);
+
+/*function write(buffer, encoding, callback){
+  this.push(buffer.toString().toUpperCase());
+  callback();
+}
+process.stdin.pipe(through(write)).pipe(process.stdout);*/
+
+
+let counter = 0;
+function write(chunk, encoding, callback){
+  chunk = chunk.toString();
+     if(counter % 2 === 0){
+      chunk = chunk.toLowerCase() + '\n';
+    }else{
+      chunk = chunk.toUpperCase()+ '\n';
+    }
+  counter++;
+  this.push(chunk);
+  callback();
+}
+process.stdin.pipe(split()).pipe(through(write)).pipe(process.stdout);
 
 
 
