@@ -202,7 +202,7 @@ proxy.on('connect', (req, cltSocket, head) => {
 process.stdin.pipe(through(write)).pipe(process.stdout);*/
 
 
-let counter = 0;
+/*let counter = 0;
 function write(chunk, encoding, callback){
   chunk = chunk.toString();
      if(counter % 2 === 0){
@@ -214,9 +214,11 @@ function write(chunk, encoding, callback){
   this.push(chunk);
   callback();
 }
-process.stdin.pipe(split()).pipe(through(write)).pipe(process.stdout);
+process.stdin.pipe(split()).pipe(through(write)).pipe(process.stdout);*/
 
-
+process.stdin.pipe(concat( (body)=>{
+    console.log(body.toString().split("").reverse().join(""));
+}));
 
 
 
