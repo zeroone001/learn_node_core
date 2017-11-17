@@ -8,6 +8,7 @@ let url = require('url');
 let map = require('through2-map');
 let through = require('through2');
 let split = require('split');
+let concat = require('concat-stream');
 // let mymodule = require('./mymodule.js');
 
 /* readFile async */
