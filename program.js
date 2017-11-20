@@ -9,6 +9,9 @@ let map = require('through2-map');
 let through = require('through2');
 let split = require('split');
 let concat = require('concat-stream');
+let request = require('request');
+let websocket = require('websocket-stream');
+let trumpet = require("trumpet");
 // let mymodule = require('./mymodule.js');
 
 /* readFile async */
@@ -220,7 +223,7 @@ process.stdin.pipe(split()).pipe(through(write)).pipe(process.stdout);*/
     console.log(body.toString().split("").reverse().join(""));
 }));*/
 
-http.createServer(function(req,res){
+/*http.createServer(function(req,res){
   if(req.method === "POST"){
     req.pipe(map((buf)=>{
       return buf.toString().toUpperCase();
@@ -232,9 +235,13 @@ http.createServer(function(req,res){
       callback();
     })).pipe(res);
   }
-}).listen(parseInt(process.argv[2]));
+}).listen(parseInt(process.argv[2]));*/
 
+/*let r = request.post("http://localhost:8099");
+process.stdin.pipe(r).pipe(process.stdout);*/
 
+let stream = websocket("ws://localhost:8099");
+stream.write("hello\n");
 
 
 
