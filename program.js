@@ -240,9 +240,14 @@ process.stdin.pipe(split()).pipe(through(write)).pipe(process.stdout);*/
 /*let r = request.post("http://localhost:8099");
 process.stdin.pipe(r).pipe(process.stdout);*/
 
-let stream = websocket("ws://localhost:8099");
-stream.write("hello\n");
+/*let stream = websocket("ws://localhost:8099");
+stream.write("hello\n");*/
 
-
-
+let tr = trumpet();
+let loud = tr.select('.loud').createStream();
+loud.pipe(through(function(buf,_,callback){
+  this.push(buf.toString().toUpperCase());
+  callback();
+})).pipe(loud);
+process.stdin.pipe(tr).pipe(process.stdout);
 
