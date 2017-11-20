@@ -216,9 +216,23 @@ function write(chunk, encoding, callback){
 }
 process.stdin.pipe(split()).pipe(through(write)).pipe(process.stdout);*/
 
-process.stdin.pipe(concat( (body)=>{
+/*process.stdin.pipe(concat( (body)=>{
     console.log(body.toString().split("").reverse().join(""));
-}));
+}));*/
+
+http.createServer(function(req,res){
+  if(req.method === "POST"){
+    req.pipe(map((buf)=>{
+      return buf.toString().toUpperCase();
+    } )).pipe(res);
+  }
+  if(req.method === "POST"){
+    req.pipe(through(function(buf,_,callback){
+      this.push(buf.toString().toUpperCase());
+      callback();
+    })).pipe(res);
+  }
+}).listen(parseInt(process.argv[2]));
 
 
 
