@@ -243,11 +243,24 @@ process.stdin.pipe(r).pipe(process.stdout);*/
 /*let stream = websocket("ws://localhost:8099");
 stream.write("hello\n");*/
 
-let tr = trumpet();
+/*let tr = trumpet();
 let loud = tr.select('.loud').createStream();
 loud.pipe(through(function(buf,_,callback){
   this.push(buf.toString().toUpperCase());
   callback();
 })).pipe(loud);
-process.stdin.pipe(tr).pipe(process.stdout);
+process.stdin.pipe(tr).pipe(process.stdout);*/
+let duplexer2 = require("duplexer2");
+
+let spawn = require("child_process").spawn;
+module.exports = function(cmd, args){
+  let ps = spawn(cmd, args);
+  return duplexer2(ps.stdin, ps.stdout);
+};
+
+
+
+
+
+
 
