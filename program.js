@@ -250,13 +250,14 @@ loud.pipe(through(function(buf,_,callback){
   callback();
 })).pipe(loud);
 process.stdin.pipe(tr).pipe(process.stdout);*/
-let duplexer2 = require("duplexer2");
+
+/*let duplexer2 = require("duplexer2");
 
 let spawn = require("child_process").spawn;
 module.exports = function(cmd, args){
   let ps = spawn(cmd, args);
   return duplexer2(ps.stdin, ps.stdout);
-};
+};*/
 
 
 
