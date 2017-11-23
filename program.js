@@ -258,7 +258,10 @@ module.exports = function(cmd, args){
   let ps = spawn(cmd, args);
   return duplexer2(ps.stdin, ps.stdout);
 };*/
-
+module.exports = function (counter) {
+      // return a duplex stream to count countries on the writable side
+      // and pass through `counter` on the readable side
+};
 
 
 
