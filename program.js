@@ -12,6 +12,7 @@ let concat = require('concat-stream');
 let request = require('request');
 let websocket = require('websocket-stream');
 let trumpet = require("trumpet");
+
 // let mymodule = require('./mymodule.js');
 
 /* readFile async */
