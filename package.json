@@ -1,17 +1,15 @@
 {
-  "dependencies": {
-    "bl": "^1.2.1",
-    "duplexer2": "^0.1.4",
-    "minimist": "^1.2.0",
-    "request": "^2.83.0",
-    "split": "^1.0.1",
-    "strftime": "^0.10.0",
-    "through2": "^2.0.3",
-    "through2-map": "^3.0.0",
-    "trumpet": "^1.7.2",
-    "websocket-stream": "^5.1.1"
+  "name": "smzdm",
+  "version": "1.2.0",
+  "bin": {
+    "lys-script": "./script.js"
   },
-  "devDependencies": {
-    "concat-stream": "^1.6.0"
-  }
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.12.2",
+    "left-pad": "^1.2.0",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "license": "ISC"
 }
