@@ -7,17 +7,17 @@ var inquirer = require('inquirer');
 
 const chalk = require('chalk');
 const log = console.log;
-console.log(process.argv);
+//console.log(process.argv);
 
 //console.log(arg);
 
-/*if(args.v || args.version ){
+/*if(arg.v || arg.version ){
 console.log('v1.0.0');
-}else if(args.help){
+}else if(arg.help){
   fs.createReadStream('./us.txt').pipe(process.stdout);  
 }*/
 
-/*
+
 function range(val){
   return val.split('..').map(Number);
 }
@@ -37,6 +37,7 @@ program.version(require('./package.json').version)
   .option('-r --range <a>..<b>', 'a range', range)
   .action(function(options){
     log('options', options);
+    log('range', options.range);
   });
 
 program.command('install [option...]')
@@ -85,7 +86,7 @@ program.command('module')
             log(an);
         });
       });
-*/
+
 
 /*
  *  自定义帮助信息
@@ -98,7 +99,7 @@ program.command('module')
   log('');
 });*/
 
-// program.parse(process.argv);
+program.parse(process.argv);
 
 //log(chalk.blue(program.args));
 //log('output',chalk.green.bgBlue(program.output));
